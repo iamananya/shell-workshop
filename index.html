@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="dist/reset.css" />
     <link rel="stylesheet" href="dist/reveal.css" />
-    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="dist/theme/serif.css" id="theme" />
 
     <!-- Theme used for syntax highlighted code -->
     <link
@@ -24,7 +24,7 @@
     <div class="reveal">
       <div class="slides">
         <section style="font-size: 30px">
-          <h1>Topic</h1>
+          <h2>Workshop On</h>
           <h2>Linux Environment <br />Shell Scripting <br />Vim</h2>
           <br />
           <br />
@@ -136,17 +136,23 @@
                 Usage: echo "some text" or​printf "format string" "parameters"​
               </li>
               <br />
-
-              <blockquote style="font-size: 20px">
-                <h4>Single and double quotes in bash</h4>
-                In bash, both single and double quotes are allowed. However
-                there is subtle difference​ in behaviour. Inside double quoted
-                string, you can use sub-commands enclosed by​ $() . This is not
-                possible with single quotes. Run:​ echo"$( ls /bin)"​ and​ echo
-                '$(ls /bin)' to see the difference
-              </blockquote>
             </ul>
           </div>
+        </section>
+        <section>
+          <blockquote style="font-size: 30px; text-align: left">
+            <h2>Single and double quotes in bash</h2>
+
+            In bash, both single and double quotes are allowed. However there is
+            subtle difference​ in behaviour. Inside double quoted string, you
+            can use sub-commands enclosed by​ $() . This is not possible with
+            single quotes.
+            <br />
+            <strong
+              >Excerise: Run:​ echo"$( ls /bin)"​ and​ echo '$(ls /bin)' to see
+              the difference</strong
+            >
+          </blockquote>
         </section>
       </div>
     </div>
