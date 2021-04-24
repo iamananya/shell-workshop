@@ -1,40 +1,112 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-		<title>reveal.js</title>
+    <title>reveal.js</title>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="plugin/highlight/monokai.css"
+      id="highlight-theme"
+    />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section style="font-size: 30px">
+          <h1>Topic</h1>
+          <h2>Linux Environment <br />Shell Scripting <br />Vim</h2>
+          <br />
+          <br />
+          <h3>Presented by:KOSS</h3>
+        </section>
+        <section>
+          <h1>Linux</h1>
+          <blockquote>
+            Just like Windows ,Linux is an Operating System
+          </blockquote>
+        </section>
+        <section>
+          <h3>Why Linux??</h3>
+          <ul style="font-size: 30px">
+            <li>Code is open sourced</li>
+            <li>
+              We can modify linux code to create our own Linux
+              distribution(distros)
+              <em
+                >Might be among you someone create's a new distros and become
+                famous :)
+              </em>
+            </li>
+            <li>
+              Popular Linux distros are <em>Fedora</em>,<em>Ubuntu</em>,<em
+                >Linux Kali</em
+              >
+            </li>
+          </ul>
+        </section>
+        <section style="font-size: 30px">
+          <h2>What is a Shell?</h2>
+          <ul>
+            <li>Shell is a program that let’s you run shell commands.​</li>
+            <li>
+              A Shell is a command line interpreter, which runs your shell
+              scripts.​
+            </li>
+            Shell is not equal to a Terminal.​
+            <li>
+              Examples:​ tcsh​ <br />
+              fish <br />​ Bourne - Again Shell (bash)<br />​ zsh etc.​
+            </li>
+            <blockquote>
+              Type <strong>$cat /etc/shells</strong> to display the shells
+              available in your system
+            </blockquote>
+          </ul>
+        </section>
+        <section style="font-size: 30px">
+          <h2>Linux Directory</h2>
+          <blockquote>
+            <ul>
+              <li>/bin :User Binary files</li>
+              <li>/boot : Boot loader files</li>
+              <li>/dev:device files</li>
+              <li>/lib : system libraries</li>
+              <li>/tmp : Temporary Files</li>
+              <li>/var :variable files .... and a lot more</li>
+            </ul>
+          </blockquote>
+	 </section>
+	 <section>
+		 
+	 </section>
+      </div>
+    </div>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
 </html>
