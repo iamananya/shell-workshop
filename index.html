@@ -169,8 +169,137 @@ b<!DOCTYPE html>
           </blockquote>
 	 </section>
 	 <section>
-
+		 <h2>cat ,head ,tail</h2>
+		<img src="/images/cat.png"  height="150" width="250">
+		<ul style="font-size: 30px;">
+			<li>cat stands for conCATenate .</li>	
+			<li>cat file1 file2 file3 will output all​ the 3 files combined in the given sequence.​</li>
+			<li>However, in practice, people use	cat	to print out the 1 full file only.​</li>
+			<li>head:prints out the first few lines of a file and	tail:prints out the last few  lines of a file.​</li>
+			<li>Both accept a parameter  number n, This limits the output to​ n number of lines</li>
+			<li>Example: to get the first 15 lines of a line, 
+				<em>run:​head -n15 file</em></li>
+		</ul>
 	 </section>
+	 <section>
+		 <h2>grep</h2>
+		 <div>
+			 <ul>
+				 <li>grep	prints those lines in a given list of files that match a pattern.​</li>
+				 <li>Usage:	grep pattern filename .​</li>
+				 <li>Another common usage is to pipe the output of some other command to grep. For  example:<blockquote>​cat file |grep	kharagpur</blockquote>​</li>
+				 <li>This will find all lines in a file that have the string “kharagpur” in it.​</li>
+				 <li>pattern	can be a Regular Expression too. For example:​<blockquote>whois google.com	|grep	[Cc]ountry</blockquote> </li>
+				 <li>will fetch the whois record of Google.com using whois CLI (installed separately) and  from that record, will find out all string which have either “country” or “Country” in it.​</li>
+			 </ul>
+		 </div>
+	 </section>
+	 <section>
+		<h3 style="text-transform: lowercase">which</h3>
+		<div style="font-size: 30px">
+		  <ul>
+		    <li>Every command that you run in the shell actually is an executable located  somewhere in your PATH (it is an environment variable, more on that later).​</li>
+		    <li>To find out which particular executable is being run,	which	is</li>
+		    <blockquote>$ which echo​ 
+			<br>
+			/usr/bin/echo</blockquote>
+			<li>Resolving virtualenvs​</li>
+			<li>While working with multiple Python projects together, one might get confused as to​
+
+			what the current python binary is being used.  At that time, running	which python​
+				
+			helps a lot.​</li>
+		  </ul>
+		</div>
+	     </section>
+	     <section>
+		<h3>cp, mv and mkdir​</h3>
+		<ul style="font-size: 30px;">
+			<li>cp some/path/file copies file from  some/path/file  to some/other/path</li>
+			<li>To recursively copy a folder and all its files and subdirectories, we use	cp -r .​</li>
+			<li>The main job of	mv	is to move files and folders from one directory to the other</li>
+			<li>Althought	mv file newname	renames the file	file	to	newname </li>
+			<li>Paths in cp and mv also support wildcards. For example,​
+
+				cp yt-slides/*.pdf folder2/	copies only the pdf files.​
+				
+				mkdir	makes directories. Usage: it creates a new ​directory	new_directory_to_make	under the existing path	existing/path .​</li>
+
+				<li>However, if the parent directory doesn’t exist yet, we can create the whole hierarchy​</li>
+		</ul>
+	     </section>
+	     <section>
+		     <h3>rm and rmdir​</h3>
+		     <div>
+			     <ul>
+				     <li>
+					rmdir	removes empty directories.​   
+				     </li>
+				     <li>rm	is a general command for removal of files and folders.​</li>
+				     <li>To recursively delete, use the	-r	flag with	rm .​</li>
+
+			     </ul>
+			     <blockquote>
+				<strong>NEVER RUN:​ </strong>sudo rm -rf /
+			     </blockquote>
+		     </div>
+
+	     </section>
+	     <section>
+		     <h3>.sh scripts</h3>
+		     <div style="font-size: 30px;">
+		     <ul>
+			     <li>Apart from running from terminal, we can also put our commands in a script file.​</li>
+			     <li>Files can be run as	sh script.sh .​</li>
+			     <li>To be able to run the script as an executable, we need to set executable flag on it.  This is done by:​
+				     <em> chmod +x script.sh​</em>
+			     </li>
+			     <li>But before that, we need to declare which shell to use to run it.​</li>
+			     <li>This is done on the very first line of the script, by writing:​</li>
+			
+		     </ul>
+		     <blockquote>
+			   <strong>#!/bin/bash</strong>  
+			   This is called the	Shebang	line.​
+			   <br>
+			   Following the previous 2 steps, one can then execute the script as:​
+			   <strong>$./script</strong>
+		     </blockquote>
+		</div>
+	     </section>
+	     <section>
+		     <h3>.bashrc</h3>
+		     <div style="font-size: 30px;">
+		     <ul>
+			     <li>When a shell is loaded on a terminal, you might want to run some commands  before hand.​</li>
+			     <li>For example, you might want to change the	PATH	variable so as to include your​
+
+				java	compiler, or you might want to set the proxy variables.</li>
+				<li>This can be achieved by putting the relevant commands in the bash configuration  files.​</li>
+				<li>For user settings, we use	$HOME/.bashrc .​</li>
+				<li>For root settings, the files are located in	/etc .​</li>
+		     </ul>
+		</div>
+	     </section>
+	     <section>
+		   <h2>Excerise</h2>  
+	     </section>
+	     <section>
+		     <h3>Problem 1</h3>
+		     <blockquote>
+			     
+			     From user take "n" as inpot and then take n numbers as input.
+			     Sort the numbers and display the result.
+		     </blockquote>
+	     </section>
+	     <section>
+		<h3>Problem 2</h3>
+		     <blockquote>
+			Get the path of all	.py	files in your computer.​
+			<br>
+			Then find out how many times in all these files the	os	module has been imported.​
+		     </blockquote>
+	     </section>
       </div>
     </div>
 
