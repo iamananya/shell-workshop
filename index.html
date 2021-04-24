@@ -86,10 +86,68 @@
               <li>/var :variable files .... and a lot more</li>
             </ul>
           </blockquote>
-	 </section>
-	 <section>
-		 
-	 </section>
+        </section>
+        <section>
+          <h2>Basic linux Commands</h2>
+        </section>
+        <section>
+          <h3 style="text-transform: lowercase">ls</h3>
+          <div style="font-size: 30px">
+            <ul>
+              <li>This is used to list files.​</li>
+              <li>
+                Usage: ls -[Options] [path]<em>
+                  {Note:If a path is not given, current directory is
+                  assumed.}</em
+                >​
+              </li>
+              <li>
+                Path can also contain wildcards. Example: ls *.pdf​ will list
+                all the pdf files in that directory
+              </li>
+              <li>
+                Options consists of one or a combination of character flags that
+                invoke special functions:​
+              </li>
+              <ul>
+                <li>l : List files with additional metadata​</li>
+                <li>a : Show hidden files also. (Name begins with .</li>
+                <li>h : Show file sizes in MBs and GBs instead of bytes.​</li>
+                <li>t : Sort by date modified.​</li>
+                <li>Multiple options can be combined as: ls -lah .​</li>
+              </ul>
+            </ul>
+          </div>
+        </section>
+        <section>
+          <blockquote>
+            Excersie: Open a shell and create a file with the list of all files
+            (both hidden and visible) sorted by the date modified.​
+          </blockquote>
+        </section>
+        <section>
+          <h2 style="text-transform: lowercase">Echo and Printf</h2>
+          <div style="font-size: 30px">
+            <ul>
+              <li>These are used to print stuff (Obvious Lol!)​</li>
+              <li>printf supports formatted output like C.​</li>
+              <li>like C.​ echo is more common in use than​ printf</li>
+              <li>
+                Usage: echo "some text" or​printf "format string" "parameters"​
+              </li>
+              <br />
+
+              <blockquote style="font-size: 20px">
+                <h4>Single and double quotes in bash</h4>
+                In bash, both single and double quotes are allowed. However
+                there is subtle difference​ in behaviour. Inside double quoted
+                string, you can use sub-commands enclosed by​ $() . This is not
+                possible with single quotes. Run:​ echo"$( ls /bin)"​ and​ echo
+                '$(ls /bin)' to see the difference
+              </blockquote>
+            </ul>
+          </div>
+        </section>
       </div>
     </div>
 
