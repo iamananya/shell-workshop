@@ -1,322 +1,1119 @@
-b<!DOCTYPE html>
+!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
 
-    <title>reveal.js</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="github.com/grapheo12">
+  <title>Basics of Shell Scripting</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2/css/reveal.css">
+  <style type="text/css">
+    code {
+      white-space: pre-wrap;
+    }
 
-    <link rel="stylesheet" href="dist/reset.css" />
-    <link rel="stylesheet" href="dist/reveal.css" />
-    <link rel="stylesheet" href="dist/theme/serif.css" id="theme" />
+    span.smallcaps {
+      font-variant: small-caps;
+    }
 
-    <!-- Theme used for syntax highlighted code -->
-    <link
-      rel="stylesheet"
-      href="plugin/highlight/monokai.css"
-      id="highlight-theme"
-    />
-  </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        <section style="font-size: 30px">
-          <h2>Workshop On</h>
-          <h2>Linux Environment <br />Shell Scripting <br />Vim</h2>
-          <br />
-          <br />
-          <h3>Presented by:KOSS</h3>
+    span.underline {
+      text-decoration: underline;
+    }
+
+    div.column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+  </style>
+  <style type="text/css">
+    a.sourceLine {
+      display: inline-block;
+      line-height: 1.25;
+    }
+
+    a.sourceLine {
+      pointer-events: none;
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    a.sourceLine:empty {
+      height: 1.2em;
+    }
+
+    .sourceCode {
+      overflow: visible;
+    }
+
+    code.sourceCode {
+      white-space: pre;
+      position: relative;
+    }
+
+    div.sourceCode {
+      margin: 1em 0;
+    }
+
+    pre.sourceCode {
+      margin: 0;
+    }
+
+    @media screen {
+      div.sourceCode {
+        overflow: auto;
+      }
+    }
+
+    @media print {
+      code.sourceCode {
+        white-space: pre-wrap;
+      }
+
+      a.sourceLine {
+        text-indent: -1em;
+        padding-left: 1em;
+      }
+    }
+
+    pre.numberSource a.sourceLine {
+      position: relative;
+      left: -4em;
+    }
+
+    pre.numberSource a.sourceLine::before {
+      content: attr(title);
+      position: relative;
+      left: -1em;
+      text-align: right;
+      vertical-align: baseline;
+      border: none;
+      pointer-events: all;
+      display: inline-block;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      padding: 0 4px;
+      width: 4em;
+      color: #aaaaaa;
+    }
+
+    pre.numberSource {
+      margin-left: 3em;
+      border-left: 1px solid #aaaaaa;
+      padding-left: 4px;
+    }
+
+    div.sourceCode {}
+
+    @media screen {
+      a.sourceLine::before {
+        text-decoration: underline;
+      }
+    }
+
+    code span.al {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Alert */
+    code span.an {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Annotation */
+    code span.at {
+      color: #7d9029;
+    }
+
+    /* Attribute */
+    code span.bn {
+      color: #40a070;
+    }
+
+    /* BaseN */
+    code span.bu {}
+
+    /* BuiltIn */
+    code span.cf {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* ControlFlow */
+    code span.ch {
+      color: #4070a0;
+    }
+
+    /* Char */
+    code span.cn {
+      color: #880000;
+    }
+
+    /* Constant */
+    code span.co {
+      color: #60a0b0;
+      font-style: italic;
+    }
+
+    /* Comment */
+    code span.cv {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* CommentVar */
+    code span.do {
+      color: #ba2121;
+      font-style: italic;
+    }
+
+    /* Documentation */
+    code span.dt {
+      color: #902000;
+    }
+
+    /* DataType */
+    code span.dv {
+      color: #40a070;
+    }
+
+    /* DecVal */
+    code span.er {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Error */
+    code span.ex {}
+
+    /* Extension */
+    code span.fl {
+      color: #40a070;
+    }
+
+    /* Float */
+    code span.fu {
+      color: #06287e;
+    }
+
+    /* Function */
+    code span.im {}
+
+    /* Import */
+    code span.in {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Information */
+    code span.kw {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* Keyword */
+    code span.op {
+      color: #666666;
+    }
+
+    /* Operator */
+    code span.ot {
+      color: #007020;
+    }
+
+    /* Other */
+    code span.pp {
+      color: #bc7a00;
+    }
+
+    /* Preprocessor */
+    code span.sc {
+      color: #4070a0;
+    }
+
+    /* SpecialChar */
+    code span.ss {
+      color: #bb6688;
+    }
+
+    /* SpecialString */
+    code span.st {
+      color: #4070a0;
+    }
+
+    /* String */
+    code span.va {
+      color: #19177c;
+    }
+
+    /* Variable */
+    code span.vs {
+      color: #4070a0;
+    }
+
+    /* VerbatimString */
+    code span.wa {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Warning */
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2/css/theme/black.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'https://unpkg.com/reveal.js@3.9.2/css/print/pdf.css' : 'https://unpkg.com/reveal.js@3.9.2/css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+  <!--[if lt IE 9]>
+  <script src="https://unpkg.com/reveal.js@3.9.2/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section id="title-slide">
+        <h1 class="title">Basics of Shell Scripting</h1>
+        <p class="author"><a href="github.com/grapheo12">github.com/grapheo12</a></p>
+      </section>
+
+      <section>
+        <section id="introduction" class="title-slide slide level1">
+          <h1>Introduction</h1>
         </section>
-        <section>
-          <h1>Linux</h1>
-          <blockquote>
-	    Linux is a Kernel
-	    <br>
-	    kernel is a software written just above the hardware.
-	    
-	    <br>
-	    <img src="/images/hardware.png"  height="150" width="250">
-
-          </blockquote>
-        </section>
-        <section>
-          <h3>Why Linux??</h3>
-          <ul style="font-size: 30px">
-            <li>Code is open sourced</li>
-            <li>
-              We can modify linux code to create our own Linux
-              distributions(distros)
-              <em
-                >Might be among you someone creates a new distros and becomes
-                famous :)
-              </em>
-            </li>
-            <li>
-              Popular Linux distros are <em>Fedora</em>,<em>Ubuntu</em>,<em
-                >Linux Kali</em
-              >
-            </li>
-          </ul>
-	 </section>
-	 <section>
-		 <h2></h2>
-	 </section>
-        <section style="font-size: 30px">
+        <section id="what-is-a-shell" class="slide level2">
           <h2>What is a Shell?</h2>
           <ul>
-            <li>Shell is a program that lets you run shell commands.​</li>
             <li>
-              A Shell is a command line interpreter, which runs your shell
-              scripts.​
+              <p>Shell is a program that let’s you run shell commands.</p>
             </li>
-            Shell is not equal to a Terminal.​
             <li>
-              Examples:​ tcsh​ <br />
-              fish <br />​ Bourne Again Shell (bash)<br />​ zsh etc.​
+              <p>A Shell is a command line interpreter, which runs your shell scripts.</p>
             </li>
-            <blockquote>
-              Type <strong>$cat /etc/shells</strong> to display the shells
-              available in your system
-            </blockquote>
+            <li>
+              <p>Shell <strong>is not equal</strong> to a Terminal.</p>
+            </li>
+            <li>Examples:
+              <ul>
+                <li>tcsh</li>
+                <li>fish</li>
+                <li>Bourne - Again Shell (bash)</li>
+                <li>zsh etc.</li>
+              </ul>
+            </li>
           </ul>
         </section>
-        <section style="font-size: 30px">
-          <h2>Linux Directory</h2>
-          <blockquote>
-            <ul>
-              <li>/bin :User Binary files</li>
-              <li>/boot : Boot loader files</li>
-              <li>/dev:device files</li>
-              <li>/lib : system libraries</li>
-              <li>/tmp : Temporary Files</li>
-              <li>/var :variable files .... and a lot more</li>
-            </ul>
-          </blockquote>
-        </section>
-        <section>
-
-          <h2>Basic linux Commands</h2>
-	 </section>
-	 <section>
-		 <h3>Pwd</h3>
-	 </section>
-
-        <section>
-          <h3 style="text-transform: lowercase">ls</h3>
-          <div style="font-size: 30px">
-            <ul>
-              <li>This is used to list files.​</li>
-              <li>
-                Usage: ls -[Options] [path]<em>
-                  {Note:If a path is not given, current directory is
-                  assumed.}</em
-                >​
-              </li>
-              <li>
-                Path can also contain wildcards. Example: ls *.pdf​ will list
-                all the pdf files in that directory
-              </li>
-              <li>
-                Options consist of one or a combination of character flags that
-                invoke special functions:​
-              </li>
+        <section id="what-is-a-terminal-then" class="slide level2">
+          <h2>What is a Terminal then?</h2>
+          <ul>
+            <li>
+              <p>A terminal emulator is a graphical program that is used to run the shell.</p>
+            </li>
+            <li>
+              <p>It emulates, although in a small window and with lots of add-ons, the tty interface.</p>
+            </li>
+            <li>Examples:
               <ul>
-                <li>l : List files with additional metadata​</li>
-                <li>a : Show hidden files also. (Name begins with .</li>
-                <li>h : Show file sizes in MBs and GBs instead of bytes.​</li>
-                <li>t : Sort by date modified.​</li>
-                <li>Multiple options can be combined as: ls -lah .​</li>
+                <li>GNOME Terminal</li>
+                <li>Konsole</li>
+                <li>urxvt</li>
+                <li>Alacritty</li>
+                <li>XTerm</li>
+                <li>Termite etc.</li>
               </ul>
-            </ul>
+            </li>
+          </ul>
+        </section>
+        <section id="wait-what-is-tty" class="slide level2">
+          <h2>Wait! What is tty?</h2>
+          <ul>
+            <li>
+              <p>tty (stands for Teletype) is text based interface to your operating system.</p>
+            </li>
+            <li>
+              <p>On most Linux systems, you can use multiple teletype sessions and they can be accessed by hitting
+                <code>Ctrl + Alt + F&lt;1-12&gt;</code>.
+              </p>
+            </li>
+            <li>
+              <p>What does a tty launch after you login into one? Yes, your default <em>shell</em>.</p>
+            </li>
+          </ul>
+        </section>
+        <section id="pipes-and-redirections" class="slide level2 allowframebreaks">
+          <h2>Pipes and redirections</h2>
+          <ul>
+            <li>
+              <p>Everything in Linux is a file. <code>stdin</code>, <code>stdout</code> and other streams are also
+                (kinda) files.</p>
+            </li>
+            <li>
+              <p>Shell commands (we’ll see a few in a moment) generally spit there outputs to <code>stdout</code> and in
+                some mode take input from <code>stdin</code>.</p>
+            </li>
+            <li>
+              <p>What this means, is that we can redirect the output of one command to the input of the other without
+                creating an intermediate file.</p>
+            </li>
+            <li>
+              <p>To do so we use the pipe (<code>|</code>).</p>
+            </li>
+            <li>
+              <p>For example, suppose we write out something using <code>echo</code> and want to print the number of
+                lines in it using <code>wc</code>. The command for that will be:</p>
+            </li>
+          </ul>
+          <div class="sourceCode" id="cb1">
+            <pre
+              class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="bu">echo</span> <span class="st">&quot;Lorel ipsum dolor sit amet.\nSic mundus creatus es&quot;</span> <span class="kw">|</span> <span class="fu">wc</span> -l</a></code></pre>
+          </div>
+          <ul>
+            <li>Operators for redirecting input/output from specific files / streams are:
+              <ul>
+                <li><code>&lt; inputfile</code> Redirects <code>stdin</code> to take input from a file.</li>
+                <li><code>&gt; outputfile</code> Redirects the output to a new file (Existing file is overwritten).</li>
+                <li><code>&gt;&gt; outputfile</code> Appends the output to a file.</li>
+              </ul>
+            </li>
+            <li>An useful pattern is to redirect <code>stderr</code> to <code>/dev/null</code> (the black hole of
+              Linux), so that it doesn’t pollute your output: <code>2&gt;/dev/null</code>.</li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <section id="some-basic-commands" class="title-slide slide level1">
+          <h1>Some Basic Commands</h1>
+        </section>
+        <section id="ls" class="slide level2 allowframebreaks">
+          <h2>ls</h2>
+          <ul>
+            <li>
+              <p>This is used to list files.</p>
+            </li>
+            <li>
+              <p>Usage: <code>ls -[Options] [path]</code></p>
+            </li>
+            <li>
+              <p>If a path is not given, current directory is assumed.</p>
+            </li>
+            <li>
+              <p>Path can also contain wildcards. Example: <code>ls *.pdf</code> will list all the pdf files in the
+                current directory.</p>
+            </li>
+            <li>
+              <p>Options consists of one or a combination of character flags that invoke special functions:</p>
+              <ul>
+                <li><code>l</code>: List files with additional metadata</li>
+                <li><code>a</code>: Show hidden files also. (Name begins with <code>.</code>)</li>
+                <li><code>h</code>: Show file sizes in MBs and GBs instead of bytes.</li>
+                <li><code>t</code>: Sort by date modified.</li>
+                <li>… and many more.</li>
+              </ul>
+            </li>
+            <li>
+              <p>Multiple options can be combined as: <code>ls -lah</code>.</p>
+            </li>
+          </ul>
+          <p><em>Exercise:</em> Open a shell and create a file with the list of all files (both hidden and visible)
+            sorted by the date modified.</p>
+        </section>
+        <section id="echo-and-printf" class="slide level2 allowframebreaks">
+          <h2>echo and printf</h2>
+          <ul>
+            <li>
+              <p>These are used to print stuff (Obvious Lol!)</p>
+            </li>
+            <li>
+              <p><code>printf</code> supports formatted output like C. <code>echo</code> doesn’t.</p>
+            </li>
+            <li>
+              <p><code>echo</code> is more common in use than <code>printf</code>.</p>
+            </li>
+            <li>
+              <p>Usage: <code>echo "some text"</code> or <code>printf "format string" "parameters"</code>.</p>
+            </li>
+          </ul>
+          <div class="block">
+            <h3 id="single-and-double-quotes-in-bash">Single and double quotes in bash</h3>
+            <p>In bash, both single and double quotes are allowed. However there is subtle difference in behaviour.
+              Inside double quoted string, you can use sub-commands enclosed by <code>$()</code>. This is not possible
+              with single quotes. Run:</p>
+            <div class="sourceCode" id="cb2">
+              <pre
+                class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$(</span><span class="fu">ls</span> /bin<span class="va">)</span><span class="st">&quot;</span></a></code></pre>
+            </div>
+            <p>and</p>
+            <div class="sourceCode" id="cb3">
+              <pre
+                class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="bu">echo</span> <span class="st">&#39;$(ls /bin)&#39;</span></a></code></pre>
+            </div>
+            <p>to see the difference.</p>
           </div>
         </section>
-        <section>
-          <blockquote>
-            Excercise: Open a shell and create a file with the list of all files
-            (both hidden and visible) sorted by the date modified.​
-          </blockquote>
+        <section id="cat-head-and-tail" class="slide level2 allowframebreaks">
+          <h2>cat, head and tail</h2>
+          <figure>
+            <img data-src="img/catheadtail.jpg" alt="This is what these commands mean, literally!" width="200" />
+            <figcaption>This is what these commands mean, literally!</figcaption>
+          </figure>
+          <ul>
+            <li>
+              <p><code>cat</code> stands for <code>conCATenate</code>. <code>cat file1 file2 file3</code> will output
+                all the 3 files combined in the given sequence.</p>
+            </li>
+            <li>
+              <p>However, in practice, people use <code>cat</code> to print out the 1 full file only.</p>
+            </li>
+            <li>
+              <p><code>head</code> prints out the first few lines of a file and <code>tail</code> prints out the last
+                few lines of a file.</p>
+            </li>
+            <li>
+              <p>Both accept a parameter <code>-n&lt;Number&gt;</code>. This limits the output to <code>Number</code>
+                number of lines.</p>
+            </li>
+          </ul>
+          <p>Example: to get the first 15 lines of a line, run:</p>
+          <div class="sourceCode" id="cb4">
+            <pre
+              class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">head</span> -n15 file</a></code></pre>
+          </div>
+        </section>
+        <section id="find" class="slide level2 allowframebreaks">
+          <h2>find</h2>
+          <ul>
+            <li>
+              <p><code>find</code> is quite powerful as a utility.</p>
+            </li>
+            <li>
+              <p>Its basic task is to recursively print out all the files and directories from a given path.</p>
+            </li>
+          </ul>
+          <div class="sourceCode" id="cb5">
+            <pre
+              class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1">$ <span class="fu">find</span> . <span class="co"># Search starts from current directory</span></a>
+<a class="sourceLine" id="cb5-2" title="2">$ <span class="fu">find</span> / <span class="co"># Search starts from root</span></a></code></pre>
+          </div>
+          <ul>
+            <li>
+              <p>Although there are many filters and actions that find can perform.</p>
+            </li>
+            <li>
+              <p>For example, <code>find -type f</code> finds only files. Change <code>f</code> to <code>d</code> and it
+                will find only directories.</p>
+            </li>
+            <li>
+              <p><code>find -name expr</code> will match <code>expr</code> to the file names. <code>expr</code> can be a
+                string with wildcards.</p>
+            </li>
+            <li>
+              <p>These filters can also be combined.</p>
+            </li>
+            <li>
+              <p>The default action is <code>-print</code>.</p>
+            </li>
+            <li>
+              <p>However <code>find -delete</code> will delete all the files it was supposed to print.</p>
+            </li>
+            <li>
+              <p>Furthermore, <code>find -exec</code> will execute arbitrary command on the file names.</p>
+            </li>
+          </ul>
+          <p>For example:</p>
+          <div class="sourceCode" id="cb6">
+            <pre
+              class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="fu">find</span> -name <span class="st">&quot;*.js&quot;</span> -exec rm {} <span class="dt">\;</span></a></code></pre>
+          </div>
+          <p>will delete all js files. Here <code>{}</code> is a placeholder for the file name.</p>
+          <ul>
+            <li>Know more by running <code>man find</code>.</li>
+          </ul>
+        </section>
+        <section id="grep" class="slide level2 allowframebreaks">
+          <h2>grep</h2>
+          <ul>
+            <li>
+              <p><code>grep</code> prints those lines in a given list of files that match a pattern.</p>
+            </li>
+            <li>
+              <p>Usage: <code>grep pattern filename</code>.</p>
+            </li>
+            <li>
+              <p>Another common usage is to pipe the output of some other command to grep. For example:</p>
+            </li>
+          </ul>
+          <div class="sourceCode" id="cb7">
+            <pre
+              class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="fu">cat</span> file <span class="kw">|</span> <span class="fu">grep</span> kharagpur</a></code></pre>
+          </div>
+          <p>This will find all lines in a file that have the string “kharagpur” in it.</p>
+          <ul>
+            <li><code>pattern</code> can be a Regular Expression too. For example:</li>
+          </ul>
+          <div class="sourceCode" id="cb8">
+            <pre
+              class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="ex">whois</span> google.com <span class="kw">|</span> <span class="fu">grep</span> [Cc]ountry</a></code></pre>
+          </div>
+          <p>will fetch the whois record of Google.com using whois CLI (installed separately) and from that record, will
+            find out all string which have either “country” or “Country” in it.</p>
+        </section>
+        <section id="which" class="slide level2">
+          <h2>which</h2>
+          <ul>
+            <li>
+              <p>Every command that you run in the shell actually is an executable located somewhere in your PATH (it is
+                an environment variable, more on that later).</p>
+            </li>
+            <li>
+              <p>To find out which particular executable is being run, <code>which</code> is used.</p>
+            </li>
+          </ul>
+          <div class="sourceCode" id="cb9">
+            <pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1">$ <span class="fu">which</span> echo</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="ex">/usr/bin/echo</span></a></code></pre>
+          </div>
+          <div class="block">
+            <h3 id="resolving-virtualenvs">Resolving virtualenvs</h3>
+            <p>While working with multiple Python projects together, one might get confused as to what the current
+              python binary is being used. At that time, running <code>which python</code> helps a lot.</p>
+          </div>
+        </section>
+        <section id="cp-mv-and-mkdir" class="slide level2">
+          <h2>cp, mv and mkdir</h2>
+          <ul>
+            <li>
+              <p><code>cp some/path/file some/other/path</code> copies <code>file</code> from <code>some/path</code> to
+                <code>some/other/path</code>.
+              </p>
+            </li>
+            <li>
+              <p>To recursively copy a folder and all its files and subdirectories, we use <code>cp -r</code>.</p>
+            </li>
+            <li>
+              <p>The main job of <code>mv</code> is to move files and folders from one directory to the other.</p>
+            </li>
+            <li>
+              <p>Althought <code>mv file newname</code> renames the file <code>file</code> to <code>newname</code>.</p>
+            </li>
+            <li>
+              <p>Paths in cp and mv also support wildcards. For example, <code>cp yt-slides/*.pdf folder2/</code> copies
+                only the pdf files.</p>
+            </li>
+            <li>
+              <p><code>mkdir</code> makes directories. Usage: <code>mkdir existing/path/new_directory_to_make</code>.
+                This creates a new directory <code>new_directory_to_make</code> under the existing path
+                <code>existing/path</code>.
+              </p>
+            </li>
+            <li>
+              <p>However, if the parent directory doesn’t exist yet, we can create the whole hierarchy by using the
+                <code>-p</code> flag.
+              </p>
+            </li>
+          </ul>
+        </section>
+        <section id="rm-and-rmdir" class="slide level2">
+          <h2>rm and rmdir</h2>
+          <ul>
+            <li>
+              <p><code>rmdir</code> removes empty directories.</p>
+            </li>
+            <li>
+              <p><code>rm</code> is a general command for removal of files and folders.</p>
+            </li>
+            <li>
+              <p>To recursively delete, use the <code>-r</code> flag with <code>rm</code>.</p>
+            </li>
+          </ul>
+          <div class="block">
+            <h3 id="warning">Warning</h3>
+            <p>NEVER RUN:</p>
+            <div class="sourceCode" id="cb10">
+              <pre
+                class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="fu">sudo</span> rm -rf /</a></code></pre>
+            </div>
+          </div>
+        </section>
+        <section id="wc-sort-shuf" class="slide level2">
+          <h2>wc, sort, shuf, …</h2>
+          <p>These fall under the category of text manipulation programs.</p>
+          <ul>
+            <li>
+              <p><code>wc</code> returns the newline, word and byte count for each of the files that are passed to it.
+              </p>
+            </li>
+            <li>
+              <p>We can get the individual newline, word or byte count by using <code>-l</code>, <code>-w</code> or
+                <code>-c</code> flags respectively.
+              </p>
+            </li>
+            <li>
+              <p><code>sort</code> sorts the lines of a document in lexicographical order. Although the ordering can be
+                changed using appropriate flags.</p>
+            </li>
+            <li>
+              <p><code>sort -u</code> gives the unique lines in the document.</p>
+            </li>
+            <li>
+              <p><code>shuf</code> randomly selects a few lines from a file. The number of lines to take can be passed
+                using <code>-n&lt;Number&gt;</code> flag.</p>
+            </li>
+            <li>
+              <p>Other programs of this category are: <code>uniq</code>, <code>split</code> etc.</p>
+            </li>
+          </ul>
+        </section>
+        <section id="wget-and-curl" class="slide level2">
+          <h2>wget and curl</h2>
+          <ul>
+            <li>
+              <p>These programs are used to fetch resources from the internet.</p>
+            </li>
+            <li>
+              <p><code>wget</code>, as the name suggests, performs only GET requests.</p>
+            </li>
+            <li>
+              <p>By default, wget saves the output to a file in the current directory. However, this can be changed
+                using the <code>-o</code> flag.</p>
+            </li>
+            <li>
+              <p>cURL is a more generic tool. It can be used to perform arbitrary HTTP requests.</p>
+            </li>
+          </ul>
+          <p>For example, sending a POST request to an URL through curl is as follows:</p>
+          <div class="sourceCode" id="cb11">
+            <pre
+              class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb11-1" title="1"><span class="ex">curl</span> -X POST -H <span class="st">&#39;Content-type: application/json&#39;</span></a>
+<a class="sourceLine" id="cb11-2" title="2"> <span class="ex">-d</span> <span class="st">&#39;{&quot;message&quot;: &quot;Hello&quot;}&#39;</span> http://url/endpoint</a></code></pre>
+          </div>
+          <p><code>-X</code> defines request method, <code>-H</code> defines headers, <code>-b</code> defines Request
+            body.</p>
+        </section>
+        <section id="exercise" class="slide level2">
+          <h2>Exercise</h2>
+          <p>Look for the usage of these commands:</p>
+          <ul>
+            <li>man</li>
+            <li>history</li>
+            <li>sed</li>
+            <li>awk</li>
+            <li>top</li>
+            <li>xargs</li>
+            <li>cut</li>
+            <li>time</li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <section id="variables-and-control-flow" class="title-slide slide level1">
+          <h1>Variables and Control Flow</h1>
+        </section>
+        <section id="variables" class="slide level2">
+          <h2>Variables</h2>
+          <ul>
+            <li>
+              <p>Variables here are not typed.</p>
+            </li>
+            <li>
+              <p>All variables, when <em>USED</em> should be preceeded by <strong>$</strong> symbol.</p>
+            </li>
+            <li>
+              <p>However, while declaring you should never use the $ symbol.</p>
+            </li>
+          </ul>
+          <p>Example:</p>
+          <div class="sourceCode" id="cb12">
+            <pre
+              class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1">$ <span class="va">a=</span>2     <span class="co"># Don&#39;t forget to put no space around equals</span></a>
+<a class="sourceLine" id="cb12-2" title="2">$ <span class="bu">echo</span> <span class="va">$a</span> <span class="co"># Btw this is a comment.</span></a></code></pre>
+          </div>
+        </section>
+        <section id="environment-variables" class="slide level2 allowframebreaks">
+          <h2>Environment Variables</h2>
+          <ul>
+            <li>
+              <p>These are variables that are picked up applications to modify their behaviour.</p>
+            </li>
+            <li>
+              <p>Commands to set environment variables are <code>export</code> and <code>set</code>.</p>
+            </li>
+            <li>
+              <p>Exported variables permeate to subshells, whereas set variables do not. It varies by shell, though.</p>
+            </li>
+            <li>
+              <p>Environment variables can also be set for a particular program just by prepending it before the program
+                name</p>
+            </li>
+            <li>
+              <p>These variables are unset when the shell closes, unless you have specified them in your
+                <code>.bashrc</code>.
+              </p>
+            </li>
+            <li>
+              <p>You can view all current environment variables by the <code>env</code> command.</p>
+            </li>
+          </ul>
+          <p>Examples:</p>
+          <div class="sourceCode" id="cb13">
+            <pre
+              class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1">$ <span class="bu">export</span> <span class="va">HTTP_PROXY=</span>172.16.2.30</a>
+<a class="sourceLine" id="cb13-2" title="2">$ <span class="kw">set</span> <span class="va">http_proxy=</span>172.16.2.30</a>
+<a class="sourceLine" id="cb13-3" title="3">$ <span class="va">DRI_PRIME=</span>1 <span class="ex">./android-studio</span>     </a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="co"># DRI_PRIME is used to change video card</span></a></code></pre>
+          </div>
+        </section>
+        <section id="some-special-variables" class="slide level2">
+          <h2>Some Special Variables</h2>
+          <ul>
+            <li>
+              <p><code>$$</code> is the PID of the script.</p>
+            </li>
+            <li>
+              <p><code>$!</code> is the PID of most recently executed background pipeline.</p>
+            </li>
+            <li>
+              <p>In a bash script, <code>$0</code> can be used to get the script name. <code>$i</code> for i &gt;= 1 can
+                be used to get the argument variables. (Compare with <code>sys.argv</code> of Python)</p>
+            </li>
+            <li>
+              <p><code>$PS1</code> controls the line shown at each prompt.</p>
+            </li>
+            <li>
+              <p><code>$PATH</code> contains a <code>:</code> separated list of</p>
+            </li>
+          </ul>
+        </section>
+        <section id="conditionals" class="slide level2 allowframebreaks">
+          <h2>Conditionals</h2>
+          <p>Bash doesn’t use braces or indentation to mark the blocks.</p>
+          <p>The basic structure of an <code>if</code> block is as follows:</p>
+          <div class="sourceCode" id="cb14">
+            <pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">if</span> [<span class="ex">condition1</span>]</a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="kw">then</span></a>
+<a class="sourceLine" id="cb14-3" title="3">    <span class="co"># Block to execute</span></a>
+<a class="sourceLine" id="cb14-4" title="4"><span class="kw">elif</span> [<span class="ex">condition2</span>]</a>
+<a class="sourceLine" id="cb14-5" title="5"><span class="kw">then</span></a>
+<a class="sourceLine" id="cb14-6" title="6">    <span class="co"># Block</span></a>
+<a class="sourceLine" id="cb14-7" title="7"><span class="kw">else</span></a>
+<a class="sourceLine" id="cb14-8" title="8">    <span class="co"># Block</span></a>
+<a class="sourceLine" id="cb14-9" title="9"><span class="kw">fi</span></a></code></pre>
+          </div>
+          <ul>
+            <li>
+              <p><code>[]</code> are a reference to the <code>test</code> command, which is run internally to check for
+                the conditions.</p>
+            </li>
+            <li>
+              <p>Normal operators like <code>=</code>, <code>!=</code> apply to String comparison.</p>
+            </li>
+            <li>
+              <p>Integer comparisons are done using <code>-eq</code>, <code>-gt</code> and <code>-lt</code>. (Guess
+                their meaning!).</p>
+            </li>
+            <li>
+              <p><code>! Expr</code> negates the expression <code>Expr</code>.</p>
+            </li>
+            <li>
+              <p>Some special comparisons:</p>
+              <ul>
+                <li><code>-n str</code>: Length of string is &gt; 0.</li>
+                <li><code>-z str</code>: Length is == 0.</li>
+                <li><code>-d file</code>: <code>file</code> is an existing directory.</li>
+                <li><code>-e file</code>: <code>file</code> exists.</li>
+                <li><code>-r file</code>: <code>file</code> exists and the read permission is granted.</li>
+                <li><code>-s file</code>: <code>file</code> exists and is not empty.</li>
+                <li><code>-w file</code>: <code>file</code> exists and the write permission is granted.</li>
+                <li><code>-x file</code>: <code>file</code> exists and the execute permission is granted.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section id="for-loops" class="slide level2 allowframebreaks">
+          <h2>for Loops</h2>
+          <ul>
+            <li>
+              <p>Bash’s <code>for</code> loop is similar to the Python one.</p>
+            </li>
+            <li>
+              <p>Although the concept of array is not present in bash.</p>
+            </li>
+            <li>
+              <p>Common patterns:</p>
+            </li>
+          </ul>
+          <div class="sourceCode" id="cb15">
+            <pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">for</span> <span class="ex">i</span> in var1 var2 var3</a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="kw">do</span></a>
+<a class="sourceLine" id="cb15-3" title="3">    <span class="co"># Do something with $i</span></a>
+<a class="sourceLine" id="cb15-4" title="4">    <span class="co"># vari can be numbers also</span></a>
+<a class="sourceLine" id="cb15-5" title="5"><span class="kw">done</span></a></code></pre>
+          </div>
+          <div class="sourceCode" id="cb16">
+            <pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">for</span> <span class="ex">i</span> in <span class="va">$(</span><span class="ex">Command</span> with multiple line output<span class="va">)</span></a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="kw">do</span></a>
+<a class="sourceLine" id="cb16-3" title="3">    <span class="co"># $i will contain one line at a time</span></a>
+<a class="sourceLine" id="cb16-4" title="4"><span class="kw">done</span></a></code></pre>
+          </div>
+          <div class="sourceCode" id="cb17">
+            <pre
+              class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">for</span> <span class="ex">i</span> in <span class="dt">{1..5}</span> <span class="co"># {START..STOP} range</span></a>
+<a class="sourceLine" id="cb17-2" title="2"></a>
+<a class="sourceLine" id="cb17-3" title="3"><span class="kw">for</span> <span class="ex">i</span> in <span class="dt">{1..5..2}</span> <span class="co"># {START..STOP..STEP} range</span></a>
+<a class="sourceLine" id="cb17-4" title="4"></a>
+<a class="sourceLine" id="cb17-5" title="5"><span class="kw">for</span> <span class="ex">i</span> in <span class="va">$(</span><span class="fu">seq</span> 1 100<span class="va">)</span> <span class="co"># 1 to 100 sequence</span></a></code></pre>
+          </div>
+        </section>
+        <section id="while-loops" class="slide level2 allowframebreaks">
+          <h2>while Loops</h2>
+          <ul>
+            <li>
+              <p><code>while</code> loops iterate while their conditions are true.</p>
+            </li>
+            <li>
+              <p>Syntax:</p>
+            </li>
+          </ul>
+          <div class="sourceCode" id="cb18">
+            <pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">while</span> [<span class="ex">condition</span>]</a>
+<a class="sourceLine" id="cb18-2" title="2"><span class="kw">do</span></a>
+<a class="sourceLine" id="cb18-3" title="3">    <span class="co"># Something to do</span></a>
+<a class="sourceLine" id="cb18-4" title="4"><span class="kw">done</span></a></code></pre>
+          </div>
+          <ul>
+            <li>
+              <p>A common pattern observed while using the <code>while</code> loop is incrementing the variables. This
+                is done as shown: <code>x=$(( $x + 1 ))</code>.</p>
+            </li>
+            <li>
+              <p>Another common usage of <code>while</code> is with the <code>read</code> command:</p>
+            </li>
+          </ul>
+          <div class="sourceCode" id="cb19">
+            <pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">while</span> <span class="bu">read</span> <span class="va">p</span></a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="kw">do</span></a>
+<a class="sourceLine" id="cb19-3" title="3">    <span class="co"># Something with $p</span></a>
+<a class="sourceLine" id="cb19-4" title="4"><span class="kw">done</span></a></code></pre>
+          </div>
+          <p>This reads from stdin line by line until EOF is received.</p>
+          <ul>
+            <li>
+              <p><code>while</code> with no condition is an infinite loop.</p>
+            </li>
+            <li>
+              <p><code>break</code> and <code>continue</code> work as common sense predicts.</p>
+            </li>
+            <li>
+              <p>Exercise: Read about <code>case</code> statement.</p>
+            </li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <section id="putting-it-all-together" class="title-slide slide level1">
+          <h1>Putting it all together</h1>
         </section>
         <section>
-          <h2 style="text-transform: lowercase">Echo and Printf</h2>
-          <div style="font-size: 30px">
+          <h3>.sh scripts</h3>
+          <div style="font-size: 30px;">
             <ul>
-              <li>These are used to print stuff (Obvious Lol!)​</li>
-              <li>printf supports formatted output.​</li>
-              <li>Like C,​ echo is more common in use than​ printf</li>
-              <li>
-                Usage: echo "some text" or​printf "format string" "parameters"​
+              <li>Apart from running from terminal, we can also put our commands in a script file.​</li>
+              <li>Files can be run as sh script.sh .​</li>
+              <li>To be able to run the script as an executable, we need to set executable flag on it. This is done by:​
+                <em> chmod +x script.sh​</em>
               </li>
-              <br />
+              <li>But before that, we need to declare which shell to use to run it.​</li>
+              <li>This is done on the very first line of the script, by writing:​</li>
+
+            </ul>
+            <blockquote>
+              <strong>#!/bin/bash</strong>
+              This is called the Shebang line.​
+              <br>
+              Following the previous 2 steps, one can then execute the script as:​
+              <strong>$./script</strong>
+            </blockquote>
+          </div>
+        </section>
+        <section>
+          <h3>.bashrc</h3>
+          <div style="font-size: 30px;">
+            <ul>
+              <li>When a shell is loaded on a terminal, you might want to run some commands before hand.​</li>
+              <li>For example, you might want to change the PATH variable so as to include your​
+
+                java compiler, or you might want to set the proxy variables.</li>
+              <li>This can be achieved by putting the relevant commands in the bash configuration files.​</li>
+              <li>For user settings, we use $HOME/.bashrc .​</li>
+              <li>For root settings, the files are located in /etc .​</li>
             </ul>
           </div>
         </section>
         <section>
-          <blockquote style="font-size: 30px; text-align: left">
-            <h2>Single and double quotes in bash</h2>
+          <h2>Excerise</h2>
+        </section>
+        <section>
+          <h3>Problem 1</h3>
+          <blockquote>
 
-            In bash, both single and double quotes are allowed. However there is a
-            subtle difference​ in behaviour. Inside double quoted string, you
-            can use sub-commands enclosed by​ $() . This is not possible with
-            single quotes.
-            <br />
-            <strong
-              >Exercise: Run​ echo"$( ls /bin)"​ and​ echo '$(ls /bin)' to see
-              the difference</strong
-            >
+            From user take "n" as inpot and then take n numbers as input.
+            Sort the numbers and display the result.
           </blockquote>
-	 </section>
-	 <section>
-		 <h2>cat ,head ,tail</h2>
-		<img src="/images/cat.png"  height="150" width="250">
-		<ul style="font-size: 30px;">
-			<li>cat stands for conCATenate .</li>	
-			<li>cat file1 file2 file3 will output all​ the 3 files combined in the given sequence.​</li>
-			<li>However, in practice, people use	cat	to print out the 1 full file only.​</li>
-			<li>head:prints out the first few lines of a file and	tail:prints out the last few  lines of a file.​</li>
-			<li>Both accept a parameter  number n, This limits the output to​ n number of lines</li>
-			<li>Example: to get the first 15 lines of a line, 
-				<em>run:​head -n15 file</em></li>
-		</ul>
-	 </section>
-	 <section>
-		 <h2>grep</h2>
-		 <div>
-			 <ul>
-				 <li>grep	prints those lines in a given list of files that match a pattern.​</li>
-				 <li>Usage:	grep pattern filename .​</li>
-				 <li>Another common usage is to pipe the output of some other command to grep. For  example:<blockquote>​cat file |grep	kharagpur</blockquote>​</li>
-				 <li>This will find all lines in a file that have the string “kharagpur” in it.​</li>
-				 <li>pattern	can be a Regular Expression too. For example:​<blockquote>whois google.com	|grep	[Cc]ountry</blockquote> </li>
-				 <li>will fetch the whois record of Google.com using whois CLI (installed separately) and  from that record, will find out all string which have either “country” or “Country” in it.​</li>
-			 </ul>
-		 </div>
-	 </section>
-	 <section>
-		<h3 style="text-transform: lowercase">which</h3>
-		<div style="font-size: 30px">
-		  <ul>
-		    <li>Every command that you run in the shell actually is an executable located  somewhere in your PATH (it is an environment variable, more on that later).​</li>
-		    <li>To find out which particular executable is being run,	which	is</li>
-		    <blockquote>$ which echo​ 
-			<br>
-			/usr/bin/echo</blockquote>
-			<li>Resolving virtualenvs​</li>
-			<li>While working with multiple Python projects together, one might get confused as to​
-
-			what the current python binary is being used.  At that time, running	which python​
-				
-			helps a lot.​</li>
-		  </ul>
-		</div>
-	     </section>
-	     <section>
-		<h3>cp, mv and mkdir​</h3>
-		<ul style="font-size: 30px;">
-			<li>cp some/path/file copies file from  some/path/file  to some/other/path</li>
-			<li>To recursively copy a folder and all its files and subdirectories, we use	cp -r .​</li>
-			<li>The main job of	mv	is to move files and folders from one directory to the other</li>
-			<li>Althought	mv file newname	renames the file	file	to	newname </li>
-			<li>Paths in cp and mv also support wildcards. For example,​
-
-				cp yt-slides/*.pdf folder2/	copies only the pdf files.​
-				
-				mkdir	makes directories. Usage: it creates a new ​directory	new_directory_to_make	under the existing path	existing/path .​</li>
-
-				<li>However, if the parent directory doesn’t exist yet, we can create the whole hierarchy​</li>
-		</ul>
-	     </section>
-	     <section>
-		     <h3>rm and rmdir​</h3>
-		     <div>
-			     <ul>
-				     <li>
-					rmdir	removes empty directories.​   
-				     </li>
-				     <li>rm	is a general command for removal of files and folders.​</li>
-				     <li>To recursively delete, use the	-r	flag with	rm .​</li>
-
-			     </ul>
-			     <blockquote>
-				<strong>NEVER RUN:​ </strong>sudo rm -rf /
-			     </blockquote>
-		     </div>
-
-	     </section>
-	     <section>
-		     <h3>.sh scripts</h3>
-		     <div style="font-size: 30px;">
-		     <ul>
-			     <li>Apart from running from terminal, we can also put our commands in a script file.​</li>
-			     <li>Files can be run as	sh script.sh .​</li>
-			     <li>To be able to run the script as an executable, we need to set executable flag on it.  This is done by:​
-				     <em> chmod +x script.sh​</em>
-			     </li>
-			     <li>But before that, we need to declare which shell to use to run it.​</li>
-			     <li>This is done on the very first line of the script, by writing:​</li>
-			
-		     </ul>
-		     <blockquote>
-			   <strong>#!/bin/bash</strong>  
-			   This is called the	Shebang	line.​
-			   <br>
-			   Following the previous 2 steps, one can then execute the script as:​
-			   <strong>$./script</strong>
-		     </blockquote>
-		</div>
-	     </section>
-	     <section>
-		     <h3>.bashrc</h3>
-		     <div style="font-size: 30px;">
-		     <ul>
-			     <li>When a shell is loaded on a terminal, you might want to run some commands  before hand.​</li>
-			     <li>For example, you might want to change the	PATH	variable so as to include your​
-
-				java	compiler, or you might want to set the proxy variables.</li>
-				<li>This can be achieved by putting the relevant commands in the bash configuration  files.​</li>
-				<li>For user settings, we use	$HOME/.bashrc .​</li>
-				<li>For root settings, the files are located in	/etc .​</li>
-		     </ul>
-		</div>
-	     </section>
-	     <section>
-		   <h2>Excerise</h2>  
-	     </section>
-	     <section>
-		     <h3>Problem 1</h3>
-		     <blockquote>
-			     
-			     From user take "n" as inpot and then take n numbers as input.
-			     Sort the numbers and display the result.
-		     </blockquote>
-	     </section>
-	     <section>
-		<h3>Problem 2</h3>
-		     <blockquote>
-			Get the path of all	.py	files in your computer.​
-			<br>
-			Then find out how many times in all these files the	os	module has been imported.​
-		     </blockquote>
-	     </section>
-      </div>
+        </section>
+        <section>
+          <h3>Problem 2</h3>
+          <blockquote>
+            Get the path of all .py files in your computer.​
+            <br>
+            Then find out how many times in all these files the os module has been imported.​
+          </blockquote>
+        </section>
+        <section id="sh-scripts" class="slide level2 allowframebreaks">
+          <h2>.sh scripts</h2>
+          <ul>
+            <li>
+              <p>Apart from running from terminal, we can also put our commands in a script file.</p>
+            </li>
+            <li>
+              <p>Files can be run as <code>sh script.sh</code>.</p>
+            </li>
+            <li>
+              <p>To be able to run the script as an executable, we need to set executable flag on it. This is done by:
+              </p>
+            </li>
+          </ul>
+          <div class="sourceCode" id="cb20">
+            <pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb20-1" title="1"></a>
+<a class="sourceLine" id="cb20-2" title="2">$ <span class="fu">chmod</span> +x script.sh</a></code></pre>
+          </div>
+          <ul>
+            <li>
+              <p>But before that, we need to declare which shell to use to run it.</p>
+            </li>
+            <li>
+              <p>This is done on the very first line of the script, by writing:</p>
+            </li>
+          </ul>
+          <div class="sourceCode" id="cb21">
+            <pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb21-1" title="1"></a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="co">#!/bin/bash</span></a></code></pre>
+          </div>
+          <ul>
+            <li>
+              <p>This is called the <code>Shebang</code> line.</p>
+            </li>
+            <li>
+              <p>Following the previous 2 steps, one can then execute the script as:</p>
+            </li>
+          </ul>
+          <div class="sourceCode" id="cb22">
+            <pre
+              class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb22-1" title="1">$ <span class="ex">./script</span></a></code></pre>
+          </div>
+        </section>
+        <section id="bashrc" class="slide level2">
+          <h2>.bashrc</h2>
+          <ul>
+            <li>
+              <p>When a shell is loaded on a terminal, you might want to run some commands before hand.</p>
+            </li>
+            <li>
+              <p>For example, you might want to change the <code>PATH</code> variable so as to include your
+                <code>java</code> compiler, or you might want to set the proxy variables.
+              </p>
+            </li>
+            <li>
+              <p>This can be achieved by putting the relevant commands in the bash configuration files.</p>
+            </li>
+            <li>
+              <p>For user settings, we use <code>$HOME/.bashrc</code>.</p>
+            </li>
+            <li>
+              <p>For root settings, the files are located in <code>/etc</code>.</p>
+            </li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <section id="exercises" class="title-slide slide level1">
+          <h1>Exercises</h1>
+        </section>
+        <section id="practice-is-the-key" class="slide level2">
+          <h2>Practice is the key</h2>
+          <p>As with any language, you can only know all the nuances once you get your hands dirty.</p>
+          <p>Teaching with slides merely does half the job.</p>
+          <p>Here are some problems to ponder.</p>
+        </section>
+        <section id="problem-1" class="slide level2">
+          <h2>Problem 1</h2>
+          <p>From user, take <code>n</code> as an input.</p>
+          <p>Then take <code>n</code> numbers as input.</p>
+          <p>Sort the numbers and display.</p>
+        </section>
+        <section id="problem-2" class="slide level2">
+          <h2>Problem 2</h2>
+          <p>Get the path of all <code>.py</code> files in your computer.</p>
+          <p>Then find out how many times in all these files the <code>os</code> module has been imported.</p>
+        </section>
+      </section>
     </div>
+  </div>
 
-    <script src="dist/reveal.js"></script>
-    <script src="plugin/notes/notes.js"></script>
-    <script src="plugin/markdown/markdown.js"></script>
-    <script src="plugin/highlight/highlight.js"></script>
-    <script>
-      // More info about initialization & config:
-      // - https://revealjs.com/initialization/
-      // - https://revealjs.com/config/
-      Reveal.initialize({
-        hash: true,
+  <script src="https://unpkg.com/reveal.js@3.9.2/lib/js/head.min.js"></script>
+  <script src="https://unpkg.com/reveal.js@3.9.2/js/reveal.js"></script>
 
-        // Learn about plugins: https://revealjs.com/plugins/
-        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
-      });
-    </script>
-  </body>
+  <script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      // Push each slide change to the browser history
+      history: true,
+      math: {
+        mathjax: '/usr/share/javascript/mathjax/MathJax.js',
+        config: 'TeX-AMS_HTML-full',
+        tex2jax: {
+          inlineMath: [['\\(', '\\)']],
+          displayMath: [['\\[', '\\]']],
+          balanceBraces: true,
+          processEscapes: false,
+          processRefs: true,
+          processEnvironments: true,
+          preview: 'TeX',
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+          ignoreClass: 'tex2jax_ignore',
+          processClass: 'tex2jax_process'
+        },
+      },
+
+      // Optional reveal.js plugins
+      dependencies: [
+        { src: 'https://unpkg.com/reveal.js@3.9.2/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+        { src: 'https://unpkg.com/reveal.js@3.9.2/plugin/zoom-js/zoom.js', async: true },
+        { src: 'https://unpkg.com/reveal.js@3.9.2/plugin/math/math.js', async: true },
+        { src: 'https://unpkg.com/reveal.js@3.9.2/plugin/notes/notes.js', async: true }
+      ]
+    });
+  </script>
+</body>
+
 </html>
