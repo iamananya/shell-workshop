@@ -182,8 +182,66 @@ b<!DOCTYPE html>
 		</ul>
 	 </section>
 	 <section>
+		 <h3>find</h3>
+		 <div style="font-size: 30;">
+			<ul>
+				<li>
+					find is quite powerful as a utility
+				</li>
+				<li>
+					Its basic task is to recursively print out all the files and directories from a given
+path.
+				</li>
+				<blockquote>
+					$ find . # Search starts from current directory
+					<br>
+					$ find / # Search starts from root
+				</blockquote>
+				<li>
+					Although there are many filters and actions that find can perform
+				</li>
+				<li>
+					For example, find -type f finds only files. Change f to d and it will find only directories.
+				</li>
+			</ul>
+		
+		</div>
+	 </section>
+	 <section>
+		 <div style="font-size: 30px; text-align: left;">
+			 <li>
+				find -name expr will match expr to the file names. expr can be a
+				string with wildcards 
+			 </li>
+			 <li>
+				These filters can also be combined
+			 </li>
+			 <li>
+				The default action is -print . 
+			 </li>
+			 <li>
+				However find -delete will delete all the files it was supposed to print.
+			 </li>
+			 <li>
+				 Furthermore, find -exec will execute arbitrary command on the file names. 
+			 </li>
+			<blockquote>
+				For example:
+				<br>
+				find -name "*.js" -exec rm {} \;
+				<br>
+				will delete all js files. Here {} is a placeholder for the file name.
+			</blockquote>
+			<li>
+				Know more by running man find
+			</li>
+		 </ul>
+		</div>
+		<ul>
+	 </section>
+	 <section>
 		 <h2>grep</h2>
-		 <div>
+		 <div style="font-size: 30px;">
 			 <ul>
 				 <li>grep	prints those lines in a given list of files that match a pattern.​</li>
 				 <li>Usage:	grep pattern filename .​</li>
@@ -246,6 +304,307 @@ b<!DOCTYPE html>
 
 	     </section>
 	     <section>
+		     <h3>wc, sort, shuf, . . .</h3>
+		     <div style="font-size: 30px;">
+			<ul>
+				These fall under the category of text manipulation programs.
+				<li>wc returns the newline, word and byte count for each of the files that are passed
+					to it.</li>
+					<li>We can get the individual newline, word or byte count by using -l , -w or
+						-c flags respectively.</li>
+						<li>
+							sort sorts the lines of a document in lexicographical order. Although the
+ordering can be changed using appropriate flags.
+						</li>
+						<li>
+							sort -u gives the unique lines in the document	
+						</li>
+						<li>
+							shuf randomly selects a few lines from a file. The number of lines to take can be
+passed using -n<Number> flag
+						</li>
+						<li>
+							Other programs of this category are: uniq , split etc. 
+						</li>
+			</ul>
+
+		     </div>
+	     </section>
+	     <section>
+		     <h3>wget and curl</h3>
+		     <div style="font-size: 30px;">
+			     <ul>
+				     <li>These programs are used to fetch resources from the internet.</li>
+				     <li>wget , as the name suggests, performs only GET requests.</li>
+				     <li>
+					By default, wget saves the output to a file in the current directory. However, this
+					can be changed using the -o flag. 
+				     </li>
+				     <li>
+					cURL is a more generic tool. It can be used to perform arbitrary HTTP requests.   
+				     </li>
+
+			     </ul>
+			     <blockquote>
+				For example, sending a POST request to an URL through curl is as follows:
+				curl -X POST -H 'Content-type: application/json'
+				-d '{"message": "Hello"}' http://url/endpoint
+				-X defines request method, -H defines headers, -b defines Request body.  
+			     </blockquote>
+		     </div>
+	     </section>
+	     <section>
+		<blockquote>
+			<h3>Excerise</h3>
+			<p>Look for the usage of these commands:</p>
+			<ul>
+				man
+			 history
+				sed
+				awk
+				top
+				xargs
+				cut
+				time	
+			</ul>
+		</blockquote>
+	     </section>
+	     <section><h3>Variables and Control FLow</h3></section>
+	     <section>
+		     <h3>variables</h3>
+		     <div style="font-size: 30px;">
+			<ul>
+				<li>
+					Variables here are not typed.
+				</li>
+				<li>
+					All variables, when USED should be preceeded by $ symbol.
+
+				</li>
+				<li>
+					However, while declaring you should never use the $ symbol
+				</li>
+			</ul>
+			<blockquote>
+				Example:
+$ a=2 # Don't forget to put no space around equals
+$ echo $a # Btw this is a comment.
+			</blockquote>
+		     </div>
+	     </section>
+	     <section>
+		     <h3>Environment Variables</h3>
+		     <div style="font-size: 30px;">
+			     <ul>
+				<li>These are variables that are picked up applications to modify their behaviour.</li>
+				<li>Commands to set environment variables are export and set .</li>
+				<li>
+					• Exported variables permeate to subshells, whereas set variables do not. It varies by
+shell, though.
+				</li>
+				<li>
+					Environment variables can also be set for a particular program just by prepending it
+before the program name
+				</li>
+				<li>
+					These variables are unset when the shell closes, unless you have specified them in
+your .bashrc .
+				</li>
+				<li>
+					You can view all current environment variables by the env command.
+				</li>
+			     </ul>
+			     <blockquote>
+				Examples:
+				$ export HTTP_PROXY=172.16.2.30
+				$ set http_proxy=172.16.2.30
+				$ DRI_PRIME=1 ./android-studio
+				# DRI_PRIME is used to change video card  
+			     </blockquote>
+		     </div>
+	     </section>
+	     <section>
+		     <h3>Some Special Variables</h3>
+		     <div style="font-size: 30px;">
+			<ul>
+				<li>
+					$$ is the PID of the script.
+				</li>
+				<li>
+					$! is the PID of most recently executed background pipeline.
+				</li>
+				<li>
+					In a bash script, $0 can be used to get the script name. $i for i >= 1 can be
+					used to get the argument variables. (Compare with sys.argv of Python)
+				</li>
+				<li>
+					$PS1 controls the line shown at each promp
+				</li>
+				<li>
+					$PATH contains a : separated list of
+				</li>
+			</ul>
+		     </div>
+	     </section>
+	     <section>
+		     <h3>Conditionals</h3>
+		     <div style="font-size: 30px;">
+			<p>Bash doesn’t use braces or indentation to mark the blocks.</p>
+			<blockquote>
+				The basic structure of an if block is as follows:
+				if [condition1]
+then
+# Block to execute
+elif [condition2]
+then
+# Block
+else
+# Block
+fi
+			</blockquote>
+			<ul><li>
+				[] are a reference to the test command, which is run internally to check for
+the conditions.
+			</li></ul>
+		     </div>
+
+	     </section>
+	     <section>
+		<div style="font-size: 30px;">
+			<ul>
+				<li>
+					Normal operators like = , != apply to String comparison.
+				</li>
+				<li>
+					Integer comparisons are done using -eq , -gt and -lt . (Guess their
+					meaning!).	
+				</li>
+				<li>
+					! Expr negates the expression Expr .
+				</li>
+				<li>
+					Some special comparisons:
+					<ul>
+						<li>
+							-n str : Length of string is > 0.
+						</li>
+						<li>
+							-z str : Length is == 0.
+						</li>
+						<li>
+							-d file : file is an existing directory.
+						</li>
+						<li>
+							-e file : file exists
+						</li>
+						<li>
+							
+							 -r file : file exists and the read permission is granted.
+						</li>
+						<li>
+							 -s file : file exists and is not empty
+						</li>
+						<li>
+							-w file : file exists and the write permission is granted
+						</li>
+						<li>
+							-x file : file exists and the execute permission is granted.
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	     </section>
+	     <section>
+		     <h3>
+			     FOr Loops
+		     </h3>
+		     <div style="font-size: 30px;">
+			<ul>
+				<li>
+					Bash’s for loop is similar to the Python one.	
+				</li>
+				<li>
+					Although the concept of array is not present in bash.	
+				</li>
+				
+			</ul>
+			<blockquote>
+				Common patterns:
+for i in var1 var2 var3
+do
+# Do something with $i
+# vari can be numbers also
+done
+			</blockquote>
+
+		     </div>
+	     </section>
+	     <section>
+		    <blockquote>
+			for i in $(Command with multiple line output)
+			do
+			# $i will contain one line at a time
+			done  
+		    </blockquote>
+
+		    <br>
+		    <br>
+		    <blockquote>
+			for i in {1..5} # {START..STOP} range
+			for i in {1..5..2} # {START..STOP..STEP} range
+			for i in $(seq 1 100) # 1 to 100 sequence   
+		    </blockquote>
+	     </section>
+	     <section>
+		     <h3>While loop</h3>
+		     <div style="font-size: 30px;">
+			<ul>
+				<li>
+					while loops iterate while their conditions are true.
+				</li>
+				<blockquote>
+					Syntax:
+while [condition]
+do
+# Something to do
+done
+				</blockquote>
+				<li>
+					A common pattern observed while using the while loop is incrementing the
+variables. This is done as shown: x=$(( $x + 1 )) .
+				</li>
+				<li>
+					Another common usage of while is with the read command:	
+				</li>
+			</ul>
+
+		     </div>
+	     </section>
+	     <section>
+		     <div style="font-size: 30px;">
+			<blockquote>
+				while read p
+				do
+				# Something with $p
+				done	
+			</blockquote>
+			<ul>
+				This reads from stdin line by line until EOF is received.
+				<li>
+					while with no condition is an infinite loop.
+				</li>
+				<li>
+					break and continue work as common sense predicts
+				</li>
+				<li>
+					Exercise: Read about case statement
+				</li>
+			</ul>
+
+		     </div>
+	     </section>
+	     <section>
 		     <h3>.sh scripts</h3>
 		     <div style="font-size: 30px;">
 		     <ul>
@@ -266,6 +625,9 @@ b<!DOCTYPE html>
 			   <strong>$./script</strong>
 		     </blockquote>
 		</div>
+	     </section>
+	     <section>
+
 	     </section>
 	     <section>
 		     <h3>.bashrc</h3>
