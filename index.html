@@ -193,8 +193,19 @@ b<!DOCTYPE html>
               </li>
               <br />
             </ul>
+			<blockquote style="text-align: left;">
+				
+				Operators for redirecting output from specific files / streams are:
+				<br>
+				 > outputfile Redirects the output to a new file (Existing file is overwritten).
+				 <br>
+				 >> outputfile Appends the output to a file.
+			</blockquote>
           </div>
         </section>
+		
+
+					
         
 	 <section>
 		 <h3>cat,head ,tail</h3>
@@ -273,10 +284,13 @@ path.
 			 <ul>
 				 <li>grep	prints those lines in a given list of files that match a pattern.​</li>
 				 <li>Usage:	grep pattern filename .​</li>
-				 <li>Another common usage is to pipe the output of some other command to grep. For  example:<blockquote>​cat file |grep	kharagpur</blockquote>​</li>
-				 <li>This will find all lines in a file that have the string “kharagpur” in it.​</li>
-				 <li>pattern	can be a Regular Expression too. For example:​<blockquote>whois google.com	|grep	[Cc]ountry</blockquote> </li>
-				 <li>will fetch the whois record of Google.com using whois CLI (installed separately) and  from that record, will find out all string which have either “country” or “Country” in it.​</li>
+				 <li>Another common usage is to show the output of some other command to grep. For  example:<blockquote>​grep "name" in name.txt </blockquote>​</li>
+				 <li>This will find all lines in a file that have the string “name” in it.​
+					 <br>Use -i for case insensitive output
+				 </li>
+				 
+				 <!-- <li>pattern	can be a Regular Expression too. For example:​<blockquote>whois google.com grep -i	[Cc]ountry</blockquote> </li> -->
+				 <!-- <li>will fetch the whois record of Google.com using whois CLI (installed separately) and  from that record, will find out all string which have either “country” or “Country” in it.​</li> -->
 			 </ul>
 		 </div>
 	 </section>
@@ -286,33 +300,33 @@ path.
 		  <ul>
 		    <li>Every command that you run in the shell actually is an executable located  somewhere in your PATH (it is an environment variable, more on that later).​</li>
 		    <li>To find out which particular executable is being run,	which	is</li>
-		    <blockquote>$ which echo​ 
+		    <blockquote style="text-align: center;">$ which echo​ 
 			<br>
 			/usr/bin/echo</blockquote>
-			<li>Resolving virtualenvs​</li>
-			<li>While working with multiple Python projects together, one might get confused as to​
-
-			what the current python binary is being used.  At that time, running	which python​
-				
-			helps a lot.​</li>
+			
 		  </ul>
 		</div>
 	     </section>
 	     <section>
 		<h3>cp, mv and mkdir​</h3>
-		<ul style="font-size: 30px;">
-			<li>cp some/path/file copies file from  some/path/file  to some/other/path</li>
-			<li>To recursively copy a folder and all its files and subdirectories, we use	cp -r .​</li>
-			<li>The main job of	mv	is to move files and folders from one directory to the other</li>
-			<li>Althought	mv file newname	renames the file	file	to	newname </li>
+		<div style="font-size: 30px;">
+		<ul>
+			<blockquote>cp some/path/file some/other/path</blockquote> <li> copies file from <em>some/path</em> to
+				<em>some/other/path </em>.</li>
+			<li>To recursively copy a folder and all its files and subdirectories, we use<em>	cp -r </em>.​</li>
+			<li>The main job of<em>mv</em>is to move files and folders from one directory to the other</li>
+			<li>Althought	<em>mv file newname</em>	renames the file <em>file</em>	to	<em>newname </em></li>
 			<li>Paths in cp and mv also support wildcards. For example,​
 
-				cp yt-slides/*.pdf folder2/	copies only the pdf files.​
+				<em>cp yt-slides/*.pdf folder2/</em>	copies only the pdf files.​
+				<li>
 				
-				mkdir	makes directories. Usage: it creates a new ​directory	new_directory_to_make	under the existing path	existing/path .​</li>
-
+				<em>mkdir</em>	makes directories. <em>mkdir existing/path/new_directory_to_make </em>. This creates a new
+				directory <em>new_directory_to_make</em> under the existing path <em>existing/path</em> .​</li>
+			</li>
 				<li>However, if the parent directory doesn’t exist yet, we can create the whole hierarchy​</li>
 		</ul>
+	</div>
 	     </section>
 	     <section>
 		     <h3>rm and rmdir​</h3>
@@ -323,16 +337,19 @@ path.
 				     </li>
 				     <li>rm	is a general command for removal of files and folders.​</li>
 				     <li>To recursively delete, use the	-r	flag with	rm .​</li>
+					 <li>
+						To forcefully delete, use the	-f	flag with	rm .
+					 </li>
 
 			     </ul>
 			     <blockquote>
-				<strong>NEVER RUN:​ </strong>sudo rm -rf /
+				Use rm -rf <strong>Responsibly​ </strong>as it can delete any file and maybe your system 
 			     </blockquote>
 		     </div>
 
 	     </section>
 	     <section>
-		     <h3>wc, sort, shuf, . . .</h3>
+		     <h3>wc, sort</h3>
 		     <div style="font-size: 30px;">
 			<ul>
 				These fall under the category of text manipulation programs.
@@ -347,17 +364,14 @@ ordering can be changed using appropriate flags.
 						<li>
 							sort -u gives the unique lines in the document	
 						</li>
-						<li>
-							shuf randomly selects a few lines from a file. The number of lines to take can be
-passed using -n<Number> flag
-						</li>
-						<li>
-							Other programs of this category are: uniq , split etc. 
-						</li>
+						<li>To sort files numerically use -n</li>
+						
+						
 			</ul>
 
 		     </div>
 	     </section>
+		 
 	     <section>
 		     <h3>wget and curl</h3>
 		     <div style="font-size: 30px;">
@@ -381,9 +395,24 @@ passed using -n<Number> flag
 			     </blockquote>
 		     </div>
 	     </section>
+		 <section>
+			<h3>Pipe (|)</h3>
+			<div style="font-size: 30px;">
+				<ul>
+					<li>
+						This direct connection between commands/ programs/ processes allows them to operate simultaneously and permits data to be transferred between them continuously
+					</li>
+					<li>
+						command_1 | command_2 | command_3 | .... | command_N 
+					</li>
+					
+				</ul>
+			</div>
+		   
+		</section>
 	     <section>
 		<blockquote>
-			<h3>Excerise</h3>
+			<h3>Hpmework Excerise</h3>
 			<p>Look for the usage of these commands:</p>
 			<ul>
 				man
