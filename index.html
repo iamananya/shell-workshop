@@ -68,6 +68,9 @@ b<!DOCTYPE html>
 							Gui:Graphical User Interface
 							<br>
 							Uses graphics ,just like Icons ,to interact with the operating system
+							<br>
+							A GUI needs to use additional system resources to load the graphical part thus it is going to be slower than using the command line
+							
 						 </li>
 						 
 							
@@ -77,6 +80,8 @@ b<!DOCTYPE html>
 							 Cli:Command Line Interface
 							 <br>
 							 Uses textual commands to interact with the operating system 
+							 <br>
+						 CLI provides greater flexibility of use.It can be used to easily do things that are difficult or even impossible to do with a GUI.
 						 </li>
 						 
 							
@@ -97,7 +102,7 @@ b<!DOCTYPE html>
               A Shell is a command line interpreter, which runs your shell
               scripts.​
             </li>
-            Shell is not equal to a Terminal.​
+          
             <li>
               Examples:​ tcsh​ ,
               fish ,​ <strong>Bourne Again Shell (bash)</strong>,​ zsh etc.​
@@ -126,7 +131,18 @@ b<!DOCTYPE html>
           <h2>Basic linux Commands</h2>
 	 </section>
 	 <section>
-		 <h3>Pwd</h3>
+		 <h3>pwd</h3>
+		 <div style="font-size: 30px;">
+			<ul>
+				<li>
+					pwd stands for Print Working Directory.
+				</li>
+				<li>
+					It prints the path of the working directory, starting from the root.
+				</li>
+			</ul>
+
+		 </div>
 	 </section>
 
         <section>
@@ -153,6 +169,7 @@ b<!DOCTYPE html>
                 <li>a : Show hidden files also. (Name begins with .</li>
                 <li>h : Show file sizes in MBs and GBs instead of bytes.​</li>
                 <li>t : Sort by date modified.​</li>
+				<li>r: option flag lists files/directories in reverse order.</li>
                 <li>Multiple options can be combined as: ls -lah .​</li>
               </ul>
             </ul>
@@ -160,39 +177,25 @@ b<!DOCTYPE html>
         </section>
         <section>
           <blockquote>
-            Excercise: Open a shell and create a file with the list of all files
-            (both hidden and visible) sorted by the date modified.​
+            Excercise: Open a terminal and create 2 hidden files and 2 visible files.Then the list of all files
+            (both hidden and visible) .Show files sorted by the date modified and with reverse date modified.​
           </blockquote>
         </section>
         <section>
-          <h2 style="text-transform: lowercase">Echo and Printf</h2>
+          <h2 style="text-transform: lowercase">Echo and printf</h2>
           <div style="font-size: 30px">
             <ul>
-              <li>These are used to print stuff (Obvious Lol!)​</li>
+              <li>It is  used to print stuff ​</li>
               <li>printf supports formatted output.​</li>
-              <li>Like C,​ echo is more common in use than​ printf</li>
+              <li>UnLike C,​ echo is more common in use than​ printf</li>
               <li>
-                Usage: echo "some text" or​printf "format string" "parameters"​
+                Usage: echo "some text" or ​printf "format string" "parameters"​
               </li>
               <br />
             </ul>
           </div>
         </section>
-        <section>
-          <blockquote style="font-size: 30px; text-align: left">
-            <h2>Single and double quotes in bash</h2>
-
-            In bash, both single and double quotes are allowed. However there is a
-            subtle difference​ in behaviour. Inside double quoted string, you
-            can use sub-commands enclosed by​ $() . This is not possible with
-            single quotes.
-            <br />
-            <strong
-              >Exercise: Run​ echo"$( ls /bin)"​ and​ echo '$(ls /bin)' to see
-              the difference</strong
-            >
-          </blockquote>
-	 </section>
+        
 	 <section>
 		 <h2>cat ,head ,tail</h2>
 		<img src="/images/cat.png"  height="150" width="250">
@@ -448,6 +451,21 @@ your .bashrc .
 			     </blockquote>
 		     </div>
 	     </section>
+		 <section>
+			<blockquote style="font-size: 30px; text-align: left">
+			  <h2>Single and double quotes in bash</h2>
+  
+			  In bash, both single and double quotes are allowed. However there is a
+			  subtle difference​ in behaviour. Inside double quoted string, you
+			  can use sub-commands enclosed by​ $() . This is not possible with
+			  single quotes.
+			  <br />
+			  <strong
+				>Exercise: Run​ echo"$( ls /bin)"​ and​ echo '$(ls /bin)' to see
+				the difference</strong
+			  >
+			</blockquote>
+	   </section>
 	     <section>
 		     <h3>Some Special Variables</h3>
 		     <div style="font-size: 30px;">
