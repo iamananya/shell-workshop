@@ -43,13 +43,13 @@ b<!DOCTYPE html>
           </blockquote>
         </section>
         <section>
-          <h3>Why Linux??</h3>
+          <h3>Why Linux???</h3>
           <ul style="font-size: 30px">
             <li>Code is open sourced</li>
-            <li>Security - Most of the virus are written for Windows. And even it has a virus, it's open-source!.You can install it again</li>
+            <li>Security - Most common malicious programs target windows.Linux is inherently more secure than windows</li>
             <li>
-              Popular Linux distros are <em>Fedora</em>,<em>Ubuntu</em>,<em
-                >Linux Kali</em
+              Popular Linux distros are <em>Fedora</em>, <em>Ubuntu</em>, <em
+                >Kali Linux</em
               >
             </li>
 			<li>Easy to install programming tools and software not matter what field you are</li>
@@ -65,9 +65,9 @@ b<!DOCTYPE html>
 				
 					
 						 <li>
-							Gui:Graphical User Interface
+							GUI:Graphical User Interface
 							<br>
-							Uses graphics ,just like Icons ,to interact with the operating system
+							Uses graphics,just like Icons ,to interact with the operating system
 							<br>
 							A GUI needs to use additional system resources to load the graphical part thus it is going to be slower than using the command line
 							
@@ -77,7 +77,7 @@ b<!DOCTYPE html>
 						
 						
 						 <li>
-							 Cli:Command Line Interface
+							CLI:Command Line Interface
 							 <br>
 							 Uses textual commands to interact with the operating system 
 							 <br>
@@ -117,12 +117,12 @@ b<!DOCTYPE html>
           <h2>Linux Directory</h2>
           <blockquote>
             <ul>
-              <li>/bin :User Binary files</li>
+              <li>/bin :Binary files</li>
               <li>/boot : Boot loader files</li>
-              <li>/dev:device files</li>
+              <li>/dev :device files</li>
               <li>/lib : system libraries</li>
               <li>/tmp : Temporary Files</li>
-              <li>/var :variable files .... and a lot more</li>
+              <li>/home :home directories .... and a lot more</li>
             </ul>
           </blockquote>
         </section>
@@ -181,6 +181,19 @@ b<!DOCTYPE html>
             (both hidden and visible) .Show files sorted by the date modified and with reverse date modified.​
           </blockquote>
         </section>
+		<section>
+			<h3>cat,head ,tail</h3>
+		   <img src="https://raw.githubusercontent.com/iamananya/shell-workshop/master/images/cat.png"  height="150" width="250">
+		   <ul style="font-size: 30px;">
+			   <li>cat stands for conCATenate .</li>	
+			   <li>cat file1 file2 file3 will output all​ the 3 files combined in the given sequence.​</li>
+			   <li>However, in practice, people use	cat	to print out the 1 full file only.​</li>
+			   <li>head:prints out the first few lines of a file and	tail:prints out the last few  lines of a file.​</li>
+			   <li>Both accept a parameter  number n, This limits the output to​ n number of lines</li>
+			   <li>Example: to get the first 15 lines of a line, 
+				   <em>run:​head -n15 file</em></li>
+		   </ul>
+		</section>
         <section>
           <h2 style="text-transform: lowercase">Echo and printf</h2>
           <div style="font-size: 30px">
@@ -207,19 +220,7 @@ b<!DOCTYPE html>
 
 					
         
-	 <section>
-		 <h3>cat,head ,tail</h3>
-		<img src="https://raw.githubusercontent.com/iamananya/shell-workshop/master/images/cat.png"  height="150" width="250">
-		<ul style="font-size: 30px;">
-			<li>cat stands for conCATenate .</li>	
-			<li>cat file1 file2 file3 will output all​ the 3 files combined in the given sequence.​</li>
-			<li>However, in practice, people use	cat	to print out the 1 full file only.​</li>
-			<li>head:prints out the first few lines of a file and	tail:prints out the last few  lines of a file.​</li>
-			<li>Both accept a parameter  number n, This limits the output to​ n number of lines</li>
-			<li>Example: to get the first 15 lines of a line, 
-				<em>run:​head -n15 file</em></li>
-		</ul>
-	 </section>
+	 
 	 <section>
 		 <h3>find</h3>
 		 <div style="font-size: 30;">
@@ -267,9 +268,9 @@ path.
 			<blockquote>
 				For example:
 				<br>
-				find -name "*.js" -exec rm {} \;
+				find -name "*.txt" 
 				<br>
-				will delete all js files. Here {} is a placeholder for the file name.
+				find the text files
 			</blockquote>
 			<li>
 				Know more by running man find
