@@ -298,7 +298,7 @@ path.
 		<h3 style="text-transform: lowercase">which</h3>
 		<div style="font-size: 30px">
 		  <ul>
-		    <li>Every command that you run in the shell actually is an executable located  somewhere in your PATH (it is an environment variable, more on that later).​</li>
+		    <li>Most command that you run in the shell actually is an executable located  somewhere in your PATH (it is an environment variable, more on that later).​</li>
 		    <li>To find out which particular executable is being run,	which	is</li>
 		    <blockquote style="text-align: center;">$ which echo​ 
 			<br>
@@ -412,17 +412,17 @@ ordering can be changed using appropriate flags.
 		</section>
 	     <section>
 		<blockquote>
-			<h3>Hpmework Excerise</h3>
+			<h3> Handy Commands</h3>
 			<p>Look for the usage of these commands:</p>
 			<ul>
-				man
-			 history
-				sed
-				awk
-				top
-				xargs
-				cut
-				time	
+				man : for manual 
+				<br>
+				example:man echo,man ls
+				<br>
+			 history : for viewing your terminal history
+
+				<br>
+				time : to check the compilation  time	
 			</ul>
 		</blockquote>
 	     </section>
@@ -444,7 +444,9 @@ ordering can be changed using appropriate flags.
 			</ul>
 			<blockquote>
 				Example:
+				<br>
 $ a=2 # Don't forget to put no space around equals
+<br>
 $ echo $a # Btw this is a comment.
 			</blockquote>
 		     </div>
@@ -453,32 +455,11 @@ $ echo $a # Btw this is a comment.
 		     <h3>Environment Variables</h3>
 		     <div style="font-size: 30px;">
 			     <ul>
-				<li>These are variables that are picked up applications to modify their behaviour.</li>
-				<li>Commands to set environment variables are export and set .</li>
-				<li>
-					• Exported variables permeate to subshells, whereas set variables do not. It varies by
-shell, though.
-				</li>
-				<li>
-					Environment variables can also be set for a particular program just by prepending it
-before the program name
-				</li>
-				<li>
-					These variables are unset when the shell closes, unless you have specified them in
-your .bashrc .
-				</li>
-				<li>
-					You can view all current environment variables by the env command.
-				</li>
-			     </ul>
-			     <blockquote>
-				Examples:
-				$ export HTTP_PROXY=172.16.2.30
-				$ set http_proxy=172.16.2.30
-				$ DRI_PRIME=1 ./android-studio
-				# DRI_PRIME is used to change video card  
-			     </blockquote>
-		     </div>
+					 <li>Variables that you want save in your system so that you can access from anywhere</li>
+					 <li>For temporary usage use <em>export variable_name=value</variable_name></em></li>
+					 <li>For permanent usage save it in your ~/.bashrc file</li>
+				</ul>
+				</div>
 	     </section>
 		 <section>
 			<blockquote style="font-size: 30px; text-align: left">
@@ -495,7 +476,7 @@ your .bashrc .
 			  >
 			</blockquote>
 	   </section>
-	     <section>
+	     <!-- <section>
 		     <h3>Some Special Variables</h3>
 		     <div style="font-size: 30px;">
 			<ul>
@@ -517,21 +498,52 @@ your .bashrc .
 				</li>
 			</ul>
 		     </div>
-	     </section>
+	     </section> -->
+		 <section>
+			<h3>.sh scripts</h3>
+			<div style="font-size: 30px;">
+			<ul>
+				<li>Apart from running from terminal, we can also put our commands in a script file.​</li>
+				<li>Files can be run as	sh script.sh .​</li>
+				<li>To be able to run the script as an executable, we need to set executable flag on it.  This is done by:​
+					<em> chmod +x script.sh​</em>
+				</li>
+				<li>But before that, we need to declare which shell to use to run it.​</li>
+				<li>This is done on the very first line of the script, by writing:​</li>
+		   
+			</ul>
+			<blockquote>
+			  <strong>#!/bin/bash</strong>  
+			  This is called the	Shebang	line.​
+			  <br>
+			  Following the previous 2 steps, one can then execute the script as:​
+			  <strong>$./script</strong>
+			</blockquote>
+	   </div>
+		</section>
 	     <section>
 		     <h3>Conditionals</h3>
 		     <div style="font-size: 30px;">
 			<p>Bash doesn’t use braces or indentation to mark the blocks.</p>
-			<blockquote>
+			<blockquote style="text-align: left;">
 				The basic structure of an if block is as follows:
+				<br>
 				if [condition1]
-then
+				<br>
+				then
+<br>
 # Block to execute
+<br>
 elif [condition2]
+<br>
 then
+<br>
 # Block
+<br>
 else
+<br>
 # Block
+<br>
 fi
 			</blockquote>
 			<ul><li>
@@ -589,7 +601,7 @@ the conditions.
 	     </section>
 	     <section>
 		     <h3>
-			     FOr Loops
+			     For Loops
 		     </h3>
 		     <div style="font-size: 30px;">
 			<ul>
@@ -676,64 +688,26 @@ variables. This is done as shown: x=$(( $x + 1 )) .
 
 		     </div>
 	     </section>
+	    
+	   
 	     <section>
-		     <h3>.sh scripts</h3>
-		     <div style="font-size: 30px;">
-		     <ul>
-			     <li>Apart from running from terminal, we can also put our commands in a script file.​</li>
-			     <li>Files can be run as	sh script.sh .​</li>
-			     <li>To be able to run the script as an executable, we need to set executable flag on it.  This is done by:​
-				     <em> chmod +x script.sh​</em>
-			     </li>
-			     <li>But before that, we need to declare which shell to use to run it.​</li>
-			     <li>This is done on the very first line of the script, by writing:​</li>
-			
-		     </ul>
-		     <blockquote>
-			   <strong>#!/bin/bash</strong>  
-			   This is called the	Shebang	line.​
-			   <br>
-			   Following the previous 2 steps, one can then execute the script as:​
-			   <strong>$./script</strong>
-		     </blockquote>
-		</div>
+		   <h2>Hands On Excerise</h2>  
 	     </section>
 	     <section>
-
-	     </section>
-	     <section>
-		     <h3>.bashrc</h3>
-		     <div style="font-size: 30px;">
-		     <ul>
-			     <li>When a shell is loaded on a terminal, you might want to run some commands  before hand.​</li>
-			     <li>For example, you might want to change the	PATH	variable so as to include your​
-
-				java	compiler, or you might want to set the proxy variables.</li>
-				<li>This can be achieved by putting the relevant commands in the bash configuration  files.​</li>
-				<li>For user settings, we use	$HOME/.bashrc .​</li>
-				<li>For root settings, the files are located in	/etc .​</li>
-		     </ul>
-		</div>
-	     </section>
-	     <section>
-		   <h2>Excerise</h2>  
-	     </section>
-	     <section>
-		     <h3>Problem 1</h3>
+		     <h3>Problem </h3>
 		     <blockquote>
 			     
-			     From user take "n" as inpot and then take n numbers as input.
-			     Sort the numbers and display the result.
+			    create 2 directories - c_codes and py_codes
+				<br>
+				using loops create 6 files
+				 1.c, 3.c, 5.c
+				 <br>
+				 2.py, 4.py, 6.py <br>
+				 put odd numbered files  in c_codes directory
+				 put even numbered files in py_codes directory
 		     </blockquote>
 	     </section>
-	     <section>
-		<h3>Problem 2</h3>
-		     <blockquote>
-			Get the path of all	.py	files in your computer.​
-			<br>
-			Then find out how many times in all these files the	os	module has been imported.​
-		     </blockquote>
-	     </section>
+	     
       </div>
     </div>
 
